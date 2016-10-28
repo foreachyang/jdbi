@@ -21,10 +21,16 @@ import org.jdbi.v3.core.PreparedBatchPart;
 import org.jdbi.v3.core.SqlStatement;
 import org.jdbi.v3.core.util.GenericTypes;
 
-class DefaultObjectBinder implements Binder<Bind, Object>
+class DefaultObjectBinder implements BinderFactory<Bind, Object>, Binder<Bind, Object>
 {
     DefaultObjectBinder()
     {
+    }
+
+    @Override
+    public Binder<Bind, Object> build(Bind annotation)
+    {
+        return this;
     }
 
     @Override

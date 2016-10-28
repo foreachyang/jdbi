@@ -27,12 +27,10 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER})
-@BindingAnnotation(BindFactory.class)
+@BindingAnnotation(DefaultObjectBinder.class)
 public @interface Bind
 {
     String USE_PARAM_NAME = "___use_param_name___";
 
     String value() default USE_PARAM_NAME;
-
-    Class<? extends Binder<Bind, ?>> binder() default DefaultObjectBinder.class;
 }
